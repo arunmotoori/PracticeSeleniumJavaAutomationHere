@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 
 public class RegisterAccountTests {
 
-	@Test
+	@Test(priority=1)
 	public void registerAccountWithMandatoryFields() {
 		
 		WebDriver driver = new ChromeDriver();
@@ -92,7 +92,7 @@ public class RegisterAccountTests {
 		
 	}
 
-	@Test
+	@Test(priority=2)
 	public void registerAccountWithAllFields() {
 		
 		WebDriver driver = new ChromeDriver();
@@ -176,7 +176,7 @@ public class RegisterAccountTests {
 		
 	}
 	
-	@Test
+	@Test(priority=3)
 	public void registerWithoutProvidingAnyFields() {
 		
 		WebDriver driver = new ChromeDriver();
@@ -219,7 +219,7 @@ public class RegisterAccountTests {
 		driver.quit();
 	}
 	
-	@Test
+	@Test(priority=4)
 	public void registerAccountBySelectingYesNewsletterOption()  {
 		
 		WebDriver driver = new ChromeDriver();
@@ -308,7 +308,7 @@ public class RegisterAccountTests {
 	
 	}
 	
-	@Test
+	@Test(priority=5)
 	public void registerAccountBySelectingNoNewsletterOption()  {
 		
 		WebDriver driver = new ChromeDriver();
@@ -397,5 +397,110 @@ public class RegisterAccountTests {
 		
 	}
 
+	@Test(priority=6)
+	public void registerAccountPageNavigationsDifferentWays() {
+		
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://tutorialsninja.com/demo/");
+		
+		WebElement myAccountDropMenu = driver.findElement(By.xpath("//span[text()='My Account']"));
+		myAccountDropMenu.click();
+		
+		WebElement registerOption = driver.findElement(By.linkText("Register"));
+		registerOption.click();
+		
+		String expectedTitle = "Register Account";
+		String actualTitle = driver.getTitle();
+		
+		Assert.assertEquals(actualTitle,expectedTitle);
+		
+		myAccountDropMenu = driver.findElement(By.xpath("//span[text()='My Account']"));
+		myAccountDropMenu.click();
+		
+		WebElement loginOption = driver.findElement(By.linkText("Login"));
+		loginOption.click();
+		
+		WebElement continueButton = driver.findElement(By.xpath("//a[text()='Continue']"));
+		continueButton.click();
 	
+		actualTitle = driver.getTitle();
+		
+		Assert.assertEquals(actualTitle,expectedTitle);
+		
+		myAccountDropMenu = driver.findElement(By.xpath("//span[text()='My Account']"));
+		myAccountDropMenu.click();
+		
+		loginOption = driver.findElement(By.linkText("Login"));
+		loginOption.click();
+		
+		WebElement registerColumnOption = driver.findElement(By.xpath("//div[@class='list-group']/a[text()='Register']"));
+		registerColumnOption.click();
+		
+		actualTitle = driver.getTitle();
+		Assert.assertEquals(actualTitle,expectedTitle);
+		
+		driver.quit();
+	
+     }
+
+	@Test(priority=7)
+	public void registerAccountByProvidingMismatchingPasswords()  {
+		
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://tutorialsninja.com/demo/");
+		
+		WebElement myAccountDropMenu = driver.findElement(By.xpath("//span[text()='My Account']"));
+		myAccountDropMenu.click();
+		
+		WebElement registerOption = driver.findElement(By.linkText("Register"));
+		registerOption.click();
+		
+		driver.findElement(By.id("input-firstname")).sendKeys("Arun");
+		driver.findElement(By.id("input-lastname")).sendKeys("Motoori");
+		Date date = new Date();
+		WebElement emailField = driver.findElement(By.id("input-email"));
+		emailField.sendKeys(date.toString().replace(" ","_").replace(":","_")+"@gmail.com");
+		driver.findElement(By.id("input-telephone")).sendKeys("1234567890");
+		driver.findElement(By.id("input-password")).sendKeys("12345");
+		driver.findElement(By.id("input-confirm")).sendKeys("123456");
+		driver.findElement(By.name("agree")).click();
+		driver.findElement(By.xpath("//input[@value='Continue']")).click();
+		
+		String actualWarningMessage = driver.findElement(By.xpath("//input[@id='input-confirm']/following-sibling::div")).getText();
+		String expectedWarningMessage = "Password confirmation does not match password!";
+		Assert.assertEquals(actualWarningMessage, expectedWarningMessage);
+		driver.quit();
+		
+	}
+
+	@Test(priority=8)
+	public void registerDuplicateAccountWithSameEmail()  {
+		
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://tutorialsninja.com/demo/");
+		
+		WebElement myAccountDropMenu = driver.findElement(By.xpath("//span[text()='My Account']"));
+		myAccountDropMenu.click();
+		
+		WebElement registerOption = driver.findElement(By.linkText("Register"));
+		registerOption.click();
+		
+		driver.findElement(By.id("input-firstname")).sendKeys("Arun");
+		driver.findElement(By.id("input-lastname")).sendKeys("Motoori");
+		driver.findElement(By.id("input-email")).sendKeys("amotooricap1@gmail.com");
+		driver.findElement(By.id("input-telephone")).sendKeys("1234567890");
+		driver.findElement(By.id("input-password")).sendKeys("12345");
+		driver.findElement(By.id("input-confirm")).sendKeys("123456");
+		driver.findElement(By.name("agree")).click();
+		driver.findElement(By.xpath("//input[@value='Continue']")).click();
+		
+		String expectedWarningMessage = "Warning: E-Mail Address is already registered!";
+		String actualWarningMessage = driver.findElement(By.xpath("//div[@id='account-register']/div[1]")).getText();
+		Assert.assertTrue(actualWarningMessage.contains(expectedWarningMessage));
+		driver.quit();
+		
+	}
 }
