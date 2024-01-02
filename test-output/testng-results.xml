@@ -1,44 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="8" passed="8" failed="0" skipped="0">
+<testng-results ignored="0" total="4" passed="4" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-12-29T17:17:30 IST" name="Default suite" finished-at="2023-12-29T17:19:12 IST" duration-ms="102249">
+  <suite started-at="2024-01-02T17:46:38 IST" name="Default suite" finished-at="2024-01-02T17:46:38 IST" duration-ms="127">
     <groups>
     </groups>
-    <test started-at="2023-12-29T17:17:30 IST" name="Default test" finished-at="2023-12-29T17:19:12 IST" duration-ms="102249">
+    <test started-at="2024-01-02T17:46:38 IST" name="Default test" finished-at="2024-01-02T17:46:38 IST" duration-ms="127">
       <class name="registerpack.RegisterAccountTests">
-        <test-method signature="registerAccountWithMandatoryFields()[pri:1, instance:registerpack.RegisterAccountTests@9f116cc]" started-at="2023-12-29T17:17:30 IST" name="registerAccountWithMandatoryFields" finished-at="2023-12-29T17:17:46 IST" duration-ms="16475" status="PASS">
+        <test-method signature="registerAccountUsingInvalidEmailAddress(java.lang.String)[pri:0, instance:registerpack.RegisterAccountTests@35cabb2a]" started-at="2024-01-02T17:46:38 IST" name="registerAccountUsingInvalidEmailAddress" data-provider="dataSupply" finished-at="2024-01-02T17:46:38 IST" duration-ms="14" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[amotoori]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- registerAccountWithMandatoryFields -->
-        <test-method signature="registerAccountWithAllFields()[pri:2, instance:registerpack.RegisterAccountTests@9f116cc]" started-at="2023-12-29T17:17:46 IST" name="registerAccountWithAllFields" finished-at="2023-12-29T17:17:59 IST" duration-ms="13109" status="PASS">
+        </test-method> <!-- registerAccountUsingInvalidEmailAddress -->
+        <test-method signature="registerAccountUsingInvalidEmailAddress(java.lang.String)[pri:0, instance:registerpack.RegisterAccountTests@35cabb2a]" started-at="2024-01-02T17:46:38 IST" name="registerAccountUsingInvalidEmailAddress" data-provider="dataSupply" finished-at="2024-01-02T17:46:38 IST" duration-ms="2" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[amotoori@]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- registerAccountWithAllFields -->
-        <test-method signature="registerWithoutProvidingAnyFields()[pri:3, instance:registerpack.RegisterAccountTests@9f116cc]" started-at="2023-12-29T17:17:59 IST" name="registerWithoutProvidingAnyFields" finished-at="2023-12-29T17:18:09 IST" duration-ms="9299" status="PASS">
+        </test-method> <!-- registerAccountUsingInvalidEmailAddress -->
+        <test-method signature="registerAccountUsingInvalidEmailAddress(java.lang.String)[pri:0, instance:registerpack.RegisterAccountTests@35cabb2a]" started-at="2024-01-02T17:46:38 IST" name="registerAccountUsingInvalidEmailAddress" data-provider="dataSupply" finished-at="2024-01-02T17:46:38 IST" duration-ms="4" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[amotoori@gmail]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- registerWithoutProvidingAnyFields -->
-        <test-method signature="registerAccountBySelectingYesNewsletterOption()[pri:4, instance:registerpack.RegisterAccountTests@9f116cc]" started-at="2023-12-29T17:18:09 IST" name="registerAccountBySelectingYesNewsletterOption" finished-at="2023-12-29T17:18:23 IST" duration-ms="13810" status="PASS">
+        </test-method> <!-- registerAccountUsingInvalidEmailAddress -->
+        <test-method signature="registerAccountUsingInvalidEmailAddress(java.lang.String)[pri:0, instance:registerpack.RegisterAccountTests@35cabb2a]" started-at="2024-01-02T17:46:38 IST" name="registerAccountUsingInvalidEmailAddress" data-provider="dataSupply" finished-at="2024-01-02T17:46:38 IST" duration-ms="2" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[amotoori@gmail.]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- registerAccountBySelectingYesNewsletterOption -->
-        <test-method signature="registerAccountBySelectingNoNewsletterOption()[pri:5, instance:registerpack.RegisterAccountTests@9f116cc]" started-at="2023-12-29T17:18:23 IST" name="registerAccountBySelectingNoNewsletterOption" finished-at="2023-12-29T17:18:37 IST" duration-ms="14817" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- registerAccountBySelectingNoNewsletterOption -->
-        <test-method signature="registerAccountPageNavigationsDifferentWays()[pri:6, instance:registerpack.RegisterAccountTests@9f116cc]" started-at="2023-12-29T17:18:37 IST" name="registerAccountPageNavigationsDifferentWays" finished-at="2023-12-29T17:18:49 IST" duration-ms="11205" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- registerAccountPageNavigationsDifferentWays -->
-        <test-method signature="registerAccountByProvidingMismatchingPasswords()[pri:7, instance:registerpack.RegisterAccountTests@9f116cc]" started-at="2023-12-29T17:18:49 IST" name="registerAccountByProvidingMismatchingPasswords" finished-at="2023-12-29T17:19:00 IST" duration-ms="11812" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- registerAccountByProvidingMismatchingPasswords -->
-        <test-method signature="registerDuplicateAccountWithSameEmail()[pri:8, instance:registerpack.RegisterAccountTests@9f116cc]" started-at="2023-12-29T17:19:00 IST" name="registerDuplicateAccountWithSameEmail" finished-at="2023-12-29T17:19:12 IST" duration-ms="11460" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- registerDuplicateAccountWithSameEmail -->
+        </test-method> <!-- registerAccountUsingInvalidEmailAddress -->
       </class> <!-- registerpack.RegisterAccountTests -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
