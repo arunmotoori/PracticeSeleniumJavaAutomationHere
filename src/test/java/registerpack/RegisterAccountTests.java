@@ -1,28 +1,51 @@
 package registerpack;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Date;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.io.FileHandler;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class RegisterAccountTests {
-
-	@Test(priority=1)
-	public void registerAccountWithMandatoryFields() {
+	
+	WebDriver driver = null;
+	WebElement myAccountDropMenu = null;
+	
+	@BeforeMethod
+	public void setup() {
 		
-		WebDriver driver = new ChromeDriver();
+		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.get("http://tutorialsninja.com/demo");
 		
-		WebElement myAccountDropMenu = driver.findElement(By.xpath("//span[text()='My Account']"));
+		myAccountDropMenu = driver.findElement(By.xpath("//span[text()='My Account']"));
 		myAccountDropMenu.click();
 		
 		WebElement registerOption = driver.findElement(By.linkText("Register"));
 		registerOption.click();
+		
+	}
+	
+	@AfterMethod
+	public void tearDown() {
+		
+		driver.quit();
+		
+	}
+
+	@Test(priority=1)
+	public void registerAccountWithMandatoryFields() {
 		
 		WebElement firstNameField = driver.findElement(By.id("input-firstname"));
 		firstNameField.sendKeys("Arun");
@@ -87,23 +110,11 @@ public class RegisterAccountTests {
 		String actualPageTitle = driver.getTitle();
 		String expectedPageTitle = "My Account";
 		Assert.assertEquals(actualPageTitle,expectedPageTitle);
-	
-		driver.quit();
 		
 	}
 
 	@Test(priority=2)
 	public void registerAccountWithAllFields() {
-		
-		WebDriver driver = new ChromeDriver();
-		driver.manage().window().maximize();
-		driver.get("https://tutorialsninja.com/demo/");
-		
-		WebElement myAccountDropMenu = driver.findElement(By.xpath("//span[text()='My Account']"));
-		myAccountDropMenu.click();
-		
-		WebElement registerOption = driver.findElement(By.linkText("Register"));
-		registerOption.click();
 		
 		WebElement firstNameField = driver.findElement(By.id("input-firstname"));
 		firstNameField.sendKeys("Arun");
@@ -171,23 +182,11 @@ public class RegisterAccountTests {
 		String actualPageTitle = driver.getTitle();
 		String expectedPageTitle = "My Account";
 		Assert.assertEquals(actualPageTitle,expectedPageTitle);
-	
-		driver.quit();
 		
 	}
 	
 	@Test(priority=3)
 	public void registerWithoutProvidingAnyFields() {
-		
-		WebDriver driver = new ChromeDriver();
-		driver.manage().window().maximize();
-		driver.get("https://tutorialsninja.com/demo");
-		
-		WebElement myAccountDropMenu = driver.findElement(By.xpath("//span[text()='My Account']"));
-		myAccountDropMenu.click();
-		
-		WebElement registerOption = driver.findElement(By.linkText("Register"));
-		registerOption.click();
 		
 		WebElement continueButton = driver.findElement(By.xpath("//input[@value='Continue']"));
 		continueButton.click();
@@ -215,22 +214,11 @@ public class RegisterAccountTests {
 		String actualPrivacyPolicyMessage = driver.findElement(By.xpath("//div[@id='account-register']/div[1]")).getText();
 		String expectedPrivacyPolicyMessage = "Warning: You must agree to the Privacy Policy!";
 		Assert.assertTrue(actualPrivacyPolicyMessage.contains(expectedPrivacyPolicyMessage));
-	
-		driver.quit();
+
 	}
 	
 	@Test(priority=4)
 	public void registerAccountBySelectingYesNewsletterOption()  {
-		
-		WebDriver driver = new ChromeDriver();
-		driver.manage().window().maximize();
-		driver.get("https://tutorialsninja.com/demo");
-		
-		WebElement myAccountDropMenu = driver.findElement(By.xpath("//span[text()='My Account']"));
-		myAccountDropMenu.click();
-		
-		WebElement registerOption = driver.findElement(By.linkText("Register"));
-		registerOption.click();
 		
 		WebElement firstNameField = driver.findElement(By.id("input-firstname"));
 		firstNameField.sendKeys("Arun");
@@ -303,23 +291,11 @@ public class RegisterAccountTests {
 		subscribeUnsubscribeNewsletterOption.click();
 		boolean yesRadioButtonState = driver.findElement(By.xpath("//input[@name='newsletter'][@value='1']")).isSelected();
 		Assert.assertTrue(yesRadioButtonState);
-		
-		driver.quit();
 	
 	}
 	
 	@Test(priority=5)
 	public void registerAccountBySelectingNoNewsletterOption()  {
-		
-		WebDriver driver = new ChromeDriver();
-		driver.manage().window().maximize();
-		driver.get("https://tutorialsninja.com/demo");
-		
-		WebElement myAccountDropMenu = driver.findElement(By.xpath("//span[text()='My Account']"));
-		myAccountDropMenu.click();
-		
-		WebElement registerOption = driver.findElement(By.linkText("Register"));
-		registerOption.click();
 		
 		WebElement firstNameField = driver.findElement(By.id("input-firstname"));
 		firstNameField.sendKeys("Arun");
@@ -393,22 +369,10 @@ public class RegisterAccountTests {
 		boolean noRadioButtonState = driver.findElement(By.xpath("//input[@name='newsletter'][@value='0']")).isSelected();
 		Assert.assertTrue(noRadioButtonState);
 		
-		driver.quit();
-		
 	}
 
 	@Test(priority=6)
 	public void registerAccountPageNavigationsDifferentWays() {
-		
-		WebDriver driver = new ChromeDriver();
-		driver.manage().window().maximize();
-		driver.get("https://tutorialsninja.com/demo/");
-		
-		WebElement myAccountDropMenu = driver.findElement(By.xpath("//span[text()='My Account']"));
-		myAccountDropMenu.click();
-		
-		WebElement registerOption = driver.findElement(By.linkText("Register"));
-		registerOption.click();
 		
 		String expectedTitle = "Register Account";
 		String actualTitle = driver.getTitle();
@@ -439,23 +403,11 @@ public class RegisterAccountTests {
 		
 		actualTitle = driver.getTitle();
 		Assert.assertEquals(actualTitle,expectedTitle);
-		
-		driver.quit();
 	
      }
 
 	@Test(priority=7)
 	public void registerAccountByProvidingMismatchingPasswords()  {
-		
-		WebDriver driver = new ChromeDriver();
-		driver.manage().window().maximize();
-		driver.get("https://tutorialsninja.com/demo/");
-		
-		WebElement myAccountDropMenu = driver.findElement(By.xpath("//span[text()='My Account']"));
-		myAccountDropMenu.click();
-		
-		WebElement registerOption = driver.findElement(By.linkText("Register"));
-		registerOption.click();
 		
 		driver.findElement(By.id("input-firstname")).sendKeys("Arun");
 		driver.findElement(By.id("input-lastname")).sendKeys("Motoori");
@@ -471,22 +423,12 @@ public class RegisterAccountTests {
 		String actualWarningMessage = driver.findElement(By.xpath("//input[@id='input-confirm']/following-sibling::div")).getText();
 		String expectedWarningMessage = "Password confirmation does not match password!";
 		Assert.assertEquals(actualWarningMessage, expectedWarningMessage);
-		driver.quit();
+		
 		
 	}
 
 	@Test(priority=8)
 	public void registerDuplicateAccountWithSameEmail()  {
-		
-		WebDriver driver = new ChromeDriver();
-		driver.manage().window().maximize();
-		driver.get("https://tutorialsninja.com/demo/");
-		
-		WebElement myAccountDropMenu = driver.findElement(By.xpath("//span[text()='My Account']"));
-		myAccountDropMenu.click();
-		
-		WebElement registerOption = driver.findElement(By.linkText("Register"));
-		registerOption.click();
 		
 		driver.findElement(By.id("input-firstname")).sendKeys("Arun");
 		driver.findElement(By.id("input-lastname")).sendKeys("Motoori");
@@ -500,9 +442,109 @@ public class RegisterAccountTests {
 		String expectedWarningMessage = "Warning: E-Mail Address is already registered!";
 		String actualWarningMessage = driver.findElement(By.xpath("//div[@id='account-register']/div[1]")).getText();
 		Assert.assertTrue(actualWarningMessage.contains(expectedWarningMessage));
-		driver.quit();
 		
 	}
 
+	@Test(dataProvider="invalidEmailSupplier",priority=9)
+	public void registerAccountUsingInvalidEmailAddress(String invalidEmail) throws IOException {
+		
+		WebElement firstNameField = driver.findElement(By.id("input-firstname"));
+		firstNameField.sendKeys("Arun");
+		
+		WebElement lastNameField = driver.findElement(By.id("input-lastname"));
+		lastNameField.sendKeys("Motoori");
+		
+		WebElement telephoneField = driver.findElement(By.id("input-telephone"));
+		telephoneField.sendKeys("1234567890");
+		
+		WebElement passwordField = driver.findElement(By.id("input-password"));
+		passwordField.sendKeys("12345");
+		
+		WebElement passwordConfirmField = driver.findElement(By.id("input-confirm"));
+		passwordConfirmField.sendKeys("12345");
+		
+		WebElement yesNewsletterField = driver.findElement(By.xpath("//input[@name='newsletter'][@value='1']"));
+		yesNewsletterField.click();
+		
+		WebElement privacyPolicyField = driver.findElement(By.name("agree"));
+		privacyPolicyField.click();
+		
+		WebElement emailField = driver.findElement(By.id("input-email"));
+		emailField.sendKeys(invalidEmail);
+		
+		WebElement continueButton = driver.findElement(By.xpath("//input[@value='Continue']"));
+		continueButton.click();
+		
+		String timeStamp = new Date().toString().replace(" ","_").replace(":","_");
+	
+		File srcFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+		FileHandler.copy(srcFile,new File("Screenshots//screenshot_"+timeStamp+".png"));
+		
+		String expectedURL = "https://tutorialsninja.com/demo/index.php?route=account/register";
+		String actualURL = driver.getCurrentUrl();
+		
+		Assert.assertEquals(actualURL, expectedURL);
+	
+	}
+	
+	@DataProvider(name="invalidEmailSupplier")
+	public String[] supplyInvalidEmailData() {
+		
+		String[] invalidEmails = {"amotoori","amotoori@","amotoori@gmail","amotoori@gmail."};
+		return invalidEmails;
+	}
+	
+	@Test(priority=10,dataProvider="invalidTelephoneSupplier")
+	public void registerAccountUsingInvalidTelephoneNumber(String telephoneNumber) {
+		
+		WebElement firstNameField = driver.findElement(By.id("input-firstname"));
+		firstNameField.sendKeys("Arun");
+		
+		WebElement lastNameField = driver.findElement(By.id("input-lastname"));
+		lastNameField.sendKeys("Motoori");
+		
+		Date date = new Date();
+		String timeStamp = date.toString().replace(" ","_").replace(":","_");
+		WebElement emailField = driver.findElement(By.id("input-email"));
+		emailField.sendKeys(timeStamp+"@gmail.com");
+		
+		WebElement passwordField = driver.findElement(By.id("input-password"));
+		passwordField.sendKeys("12345");
+		
+		WebElement passwordConfirmField = driver.findElement(By.id("input-confirm"));
+		passwordConfirmField.sendKeys("12345");
+		
+		WebElement yesNewsletterOption = driver.findElement(By.xpath("//input[@name='newsletter'][@value='1']"));
+		yesNewsletterOption.click();
+		
+		WebElement privacyPolicyField = driver.findElement(By.name("agree"));
+		privacyPolicyField.click();
+		
+		WebElement telephoneField = driver.findElement(By.id("input-telephone"));
+		telephoneField.sendKeys(telephoneNumber);
+		
+		WebElement continueButton = driver.findElement(By.xpath("//input[@value='Continue']"));
+		continueButton.click();
+		
+		String expectedURL = "https://tutorialsninja.com/demo/index.php?route=account/register";
+		String actualURL = driver.getCurrentUrl();
+		
+		Assert.assertEquals(actualURL, expectedURL);
+		
+		String expectedWarningMessage = "Invlaid telephone number is entered.";
+		String actualWarningMessage = driver.findElement(By.xpath("//input[@id='input-telephone']/following-sibling::div")).getText();
+		
+		Assert.assertEquals(actualWarningMessage, expectedWarningMessage);
+	
+		
+	}
+	
+	@DataProvider(name="invalidTelephoneSupplier")
+	public String[] supplyInvalidTelephoneData() {
+		
+		String[] invalidTelephones = {"111","abcde"};
+		return invalidTelephones;
+		
+	}
 	
 }
