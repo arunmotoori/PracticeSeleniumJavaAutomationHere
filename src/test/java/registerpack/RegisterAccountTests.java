@@ -2,14 +2,17 @@ package registerpack;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.Duration;
 import java.util.Date;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.io.FileHandler;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -544,6 +547,60 @@ public class RegisterAccountTests {
 		
 		String[] invalidTelephones = {"111","abcde"};
 		return invalidTelephones;
+		
+	}
+	
+	@Test(priority=11)
+	public void registerAccountUsingKeyboardKeys() {
+	
+		Actions actions = new Actions(driver);
+		
+		for(int i=1;i<=23;i++) {
+			actions.sendKeys(Keys.TAB).perform();
+		}
+		
+		Date date = new Date();
+		String timeStamp = date.toString().replace(" ","_").replace(":","_");
+		
+		actions.sendKeys("Arun")
+		.pause(Duration.ofSeconds(1))
+		.sendKeys(Keys.TAB)
+		.pause(Duration.ofSeconds(1))
+		.sendKeys("Motoori")
+		.pause(Duration.ofSeconds(1))
+		.sendKeys(Keys.TAB)
+		.pause(Duration.ofSeconds(1))
+		.sendKeys(timeStamp+"@gmail.com")
+		.pause(Duration.ofSeconds(1))
+		.sendKeys(Keys.TAB)
+		.pause(Duration.ofSeconds(1))
+		.sendKeys("1234567890")
+		.pause(Duration.ofSeconds(1))
+		.sendKeys(Keys.TAB)
+		.pause(Duration.ofSeconds(1))
+		.sendKeys("12345")
+		.pause(Duration.ofSeconds(1))
+		.sendKeys(Keys.TAB)
+		.pause(Duration.ofSeconds(1))
+		.sendKeys("12345")
+		.pause(Duration.ofSeconds(1))
+		.sendKeys(Keys.TAB)
+		.pause(Duration.ofSeconds(1))
+		.sendKeys(Keys.ARROW_LEFT)
+		.pause(Duration.ofSeconds(1))
+		.sendKeys(Keys.TAB)
+		.pause(Duration.ofSeconds(1))
+		.sendKeys(Keys.TAB)
+		.pause(Duration.ofSeconds(1))
+		.sendKeys(Keys.SPACE)
+		.pause(Duration.ofSeconds(1))
+		.sendKeys(Keys.TAB)
+		.pause(Duration.ofSeconds(1))
+		.sendKeys(Keys.ENTER).build().perform();
+		
+		String expectedURL = "https://tutorialsninja.com/demo/index.php?route=account/success";
+		String actualURL = driver.getCurrentUrl();
+		Assert.assertEquals(actualURL, expectedURL);
 		
 	}
 	
