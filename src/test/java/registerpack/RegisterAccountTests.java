@@ -604,4 +604,39 @@ public class RegisterAccountTests {
 		
 	}
 	
+	@Test(priority=12)
+	public void regiserAccountPlaceholdersChecking() {
+		
+		WebElement firstNameField = driver.findElement(By.id("input-firstname"));
+		String actualFirstNamePlaceHolder = firstNameField.getAttribute("placeholder");
+		String expectedFirstNamePlaceHolder = "First Name";
+		Assert.assertEquals(actualFirstNamePlaceHolder, expectedFirstNamePlaceHolder);
+		
+		WebElement lastNameField = driver.findElement(By.id("input-lastname"));
+		String actualLastNamePlaceHolder = lastNameField.getAttribute("placeholder");
+		String expectedLastNamePlaceHolder = "Last Name";
+		Assert.assertEquals(actualLastNamePlaceHolder, expectedLastNamePlaceHolder);
+		
+		WebElement emailField = driver.findElement(By.id("input-email"));
+		String actualEmailPlaceHolder = emailField.getAttribute("placeholder");
+		String expectedEmailPlaceHolder = "E-Mail";
+		Assert.assertEquals(actualEmailPlaceHolder, expectedEmailPlaceHolder);
+		
+		WebElement telephoneField = driver.findElement(By.id("input-telephone"));
+		String actualTelephonePlaceHolder = telephoneField.getAttribute("placeholder");
+		String expectedTelephonePlaceHolder = "Telephone";
+		Assert.assertEquals(actualTelephonePlaceHolder, expectedTelephonePlaceHolder);
+		
+		WebElement passwordField = driver.findElement(By.id("input-password"));
+		String actualPasswordPlaceHolder = passwordField.getAttribute("placeholder");
+		String expectedPasswordPlaceHolder = "Password";
+		Assert.assertEquals(actualPasswordPlaceHolder, expectedPasswordPlaceHolder);
+		
+		WebElement passwordConfirmField = driver.findElement(By.id("input-confirm"));
+		String actualPasswordConfirmPlaceHolder = passwordConfirmField.getAttribute("placeholder");
+		String expectedPasswordConfirmPlaceHolder = "Password Confirm";
+		Assert.assertEquals(actualPasswordConfirmPlaceHolder, expectedPasswordConfirmPlaceHolder);		
+		
+	}
+	
 }
