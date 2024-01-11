@@ -6,6 +6,7 @@ import java.time.Duration;
 import java.util.Date;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -636,6 +637,54 @@ public class RegisterAccountTests {
 		String actualPasswordConfirmPlaceHolder = passwordConfirmField.getAttribute("placeholder");
 		String expectedPasswordConfirmPlaceHolder = "Password Confirm";
 		Assert.assertEquals(actualPasswordConfirmPlaceHolder, expectedPasswordConfirmPlaceHolder);		
+		
+	}
+	
+	@Test
+	public void registerAccountMandatoryFieldsAsterickSymbolCheck() {
+		
+		WebElement firstNameLabel = driver.findElement(By.xpath("//label[@for='input-firstname']"));
+		JavascriptExecutor jse = (JavascriptExecutor)driver;
+		String actualFirstNameAsterickContent = (String) jse.executeScript("return window.getComputedStyle(arguments[0],'::before').getPropertyValue('content');",firstNameLabel);
+		Assert.assertTrue(actualFirstNameAsterickContent.contains("*"));
+		String actualFirstNameAsterickColor = (String) jse.executeScript("return window.getComputedStyle(arguments[0],'::before').getPropertyValue('color');",firstNameLabel);
+		Assert.assertEquals(actualFirstNameAsterickColor,"rgb(255, 0, 0)");
+		
+		WebElement lastNameLabel = driver.findElement(By.xpath("//label[@for='input-lastname']"));
+		String actualLastNameAsterickContent = (String) jse.executeScript("return window.getComputedStyle(arguments[0],'::before').getPropertyValue('content');",lastNameLabel);
+		Assert.assertTrue(actualLastNameAsterickContent.contains("*"));
+		String actualLastNameAsterickColor = (String) jse.executeScript("return window.getComputedStyle(arguments[0],'::before').getPropertyValue('color');",lastNameLabel);
+		Assert.assertEquals(actualLastNameAsterickColor,"rgb(255, 0, 0)");
+		
+		WebElement emailLabel = driver.findElement(By.xpath("//label[@for='input-email']"));
+		String actualEmailAsterickContent = (String) jse.executeScript("return window.getComputedStyle(arguments[0],'::before').getPropertyValue('content');",emailLabel);
+		Assert.assertTrue(actualEmailAsterickContent.contains("*"));
+		String actualEmailAsterickColor = (String) jse.executeScript("return window.getComputedStyle(arguments[0],'::before').getPropertyValue('color');",emailLabel);
+		Assert.assertEquals(actualEmailAsterickColor,"rgb(255, 0, 0)");
+		
+		WebElement telephoneLabel = driver.findElement(By.xpath("//label[@for='input-telephone']"));
+		String actualTelephoneAsterickContent = (String) jse.executeScript("return window.getComputedStyle(arguments[0],'::before').getPropertyValue('content');",telephoneLabel);
+		Assert.assertTrue(actualTelephoneAsterickContent.contains("*"));
+		String actualTelephoneAsterickColor = (String) jse.executeScript("return window.getComputedStyle(arguments[0],'::before').getPropertyValue('color');",telephoneLabel);
+		Assert.assertEquals(actualTelephoneAsterickColor,"rgb(255, 0, 0)");
+		
+		WebElement passwordLabel = driver.findElement(By.xpath("//label[@for='input-password']"));
+		String actualPasswordAsterickContent = (String) jse.executeScript("return window.getComputedStyle(arguments[0],'::before').getPropertyValue('content');",passwordLabel);
+		Assert.assertTrue(actualPasswordAsterickContent.contains("*"));
+		String actualPasswordAsterickColor = (String) jse.executeScript("return window.getComputedStyle(arguments[0],'::before').getPropertyValue('color');",passwordLabel);
+		Assert.assertEquals(actualPasswordAsterickColor,"rgb(255, 0, 0)");
+		
+		WebElement passwordConfirmLabel = driver.findElement(By.xpath("//label[@for='input-confirm']"));
+		String actualPasswordConfirmAsterickContent = (String) jse.executeScript("return window.getComputedStyle(arguments[0],'::before').getPropertyValue('content');",passwordConfirmLabel);
+		Assert.assertTrue(actualPasswordConfirmAsterickContent.contains("*"));
+		String actualPasswordConfirmAsterickColor = (String) jse.executeScript("return window.getComputedStyle(arguments[0],'::before').getPropertyValue('color');",passwordConfirmLabel);
+		Assert.assertEquals(actualPasswordConfirmAsterickColor,"rgb(255, 0, 0)");
+		
+		WebElement privacyPolicyLabel = driver.findElement(By.xpath("//div[@class='pull-right']"));
+		String privacyPolicyAsterickContent = (String) jse.executeScript("return window.getComputedStyle(arguments[0],'::before').getPropertyValue('content');",privacyPolicyLabel);
+		Assert.assertTrue(privacyPolicyAsterickContent.contains("*"));
+		String privacyPolicyAsterickColor = (String) jse.executeScript("return window.getComputedStyle(arguments[0],'::before').getPropertyValue('color');",privacyPolicyLabel);
+		Assert.assertEquals(privacyPolicyAsterickColor,"rgb(255, 0, 0)");
 		
 	}
 	

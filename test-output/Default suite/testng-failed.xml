@@ -5,7 +5,7 @@
     <classes>
       <class name="registerpack.RegisterAccountTests">
         <methods>
-          <include name="registerAccountUsingInvalidTelephoneNumber" invocation-numbers="0 1"/>
+          <include name="registerAccountMandatoryFieldsAsterickSymbolCheck"/>
           <include name="tearDown"/>
           <include name="setup"/>
         </methods>

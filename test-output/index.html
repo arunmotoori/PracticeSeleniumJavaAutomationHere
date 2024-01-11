@@ -25,7 +25,7 @@
       <span class="top-banner-title-font">Test results</span>
       <button id="button" class="button">Switch Retro Theme</button> <!-- button -->
       <br/>
-      <span class="top-banner-font-1">1 suite</span>
+      <span class="top-banner-font-1">1 suite, 1 failed test</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -39,7 +39,7 @@
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
             <a href="#" panel-name="suite-Default_suite" class="navigator-link">
-              <span class="suite-name border-passed">Default suite</span>
+              <span class="suite-name border-failed">Default suite</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -50,7 +50,7 @@
               <ul>
                 <li>
                   <a href="#" panel-name="test-xml-Default_suite" class="navigator-link ">
-                    <span>C:\Users\arunm\AppData\Local\Temp\testng-eclipse-1672545558\testng-customsuite.xml</span>
+                    <span>C:\Users\arunm\AppData\Local\Temp\testng-eclipse--798823614\testng-customsuite.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -92,21 +92,21 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">1 method,   1 passed</span>
+                    <span class="method-stats">1 method, 1 failed,   </span>
                   </li>
                   <li>
-                    <span class="method-list-title passed">Passed methods</span>
-                    <span class="show-or-hide-methods passed">
-                      <a href="#" panel-name="suite-Default_suite" class="hide-methods passed suite-Default_suite"> (hide)</a> <!-- hide-methods passed suite-Default_suite -->
-                      <a href="#" panel-name="suite-Default_suite" class="show-methods passed suite-Default_suite"> (show)</a> <!-- show-methods passed suite-Default_suite -->
+                    <span class="method-list-title failed">Failed methods</span>
+                    <span class="show-or-hide-methods failed">
+                      <a href="#" panel-name="suite-Default_suite" class="hide-methods failed suite-Default_suite"> (hide)</a> <!-- hide-methods failed suite-Default_suite -->
+                      <a href="#" panel-name="suite-Default_suite" class="show-methods failed suite-Default_suite"> (show)</a> <!-- show-methods failed suite-Default_suite -->
                     </span>
-                    <div class="method-list-content passed suite-Default_suite">
+                    <div class="method-list-content failed suite-Default_suite">
                       <span>
-                        <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Default_suite" title="registerpack.RegisterAccountTests" class="method navigator-link" hash-for-method="regiserAccountPlaceholdersChecking">regiserAccountPlaceholdersChecking</a> <!-- method navigator-link -->
+                        <img src="failed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Default_suite" title="registerpack.RegisterAccountTests" class="method navigator-link" hash-for-method="registerAccountMandatoryFieldsAsterickSymbolCheck">registerAccountMandatoryFieldsAsterickSymbolCheck</a> <!-- method navigator-link -->
                       </span>
                       <br/>
-                    </div> <!-- method-list-content passed suite-Default_suite -->
+                    </div> <!-- method-list-content failed suite-Default_suite -->
                   </li>
                 </ul>
               </div> <!-- suite-section-content -->
@@ -118,25 +118,59 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-Default_suite" class="panel Default_suite">
-          <div class="suite-Default_suite-class-passed">
+          <div class="suite-Default_suite-class-failed">
             <div class="main-panel-header rounded-window-top">
-              <img src="passed.png"/>
+              <img src="failed.png"/>
               <span class="class-name">registerpack.RegisterAccountTests</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="regiserAccountPlaceholdersChecking">
-                  </a> <!-- regiserAccountPlaceholdersChecking -->
-                  <span class="method-name">regiserAccountPlaceholdersChecking</span>
+                  <a name="registerAccountMandatoryFieldsAsterickSymbolCheck">
+                  </a> <!-- registerAccountMandatoryFieldsAsterickSymbolCheck -->
+                  <span class="method-name">registerAccountMandatoryFieldsAsterickSymbolCheck</span>
+                  <div class="stack-trace">java.lang.AssertionError: expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:111)
+	at org.testng.Assert.failNotEquals(Assert.java:1578)
+	at org.testng.Assert.assertTrue(Assert.java:57)
+	at org.testng.Assert.assertTrue(Assert.java:67)
+	at registerpack.RegisterAccountTests.registerAccountMandatoryFieldsAsterickSymbolCheck(RegisterAccountTests.java:685)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.testng.TestRunner.privateRun(TestRunner.java:848)
+	at org.testng.TestRunner.run(TestRunner.java:621)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
+	at org.testng.TestNG.runSuites(TestNG.java:1114)
+	at org.testng.TestNG.run(TestNG.java:1082)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+
+</div> <!-- stack-trace -->
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-Default_suite-class-passed -->
+          </div> <!-- suite-Default_suite-class-failed -->
         </div> <!-- panel Default_suite -->
         <div panel-name="test-xml-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\arunm\AppData\Local\Temp\testng-eclipse-1672545558\testng-customsuite.xml</span>
+            <span class="header-content">C:\Users\arunm\AppData\Local\Temp\testng-eclipse--798823614\testng-customsuite.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -147,7 +181,7 @@
     &lt;classes&gt;
       &lt;class name=&quot;registerpack.RegisterAccountTests&quot;&gt;
         &lt;methods&gt;
-          &lt;include name=&quot;regiserAccountPlaceholdersChecking&quot;/&gt;
+          &lt;include name=&quot;registerAccountMandatoryFieldsAsterickSymbolCheck&quot;/&gt;
         &lt;/methods&gt;
       &lt;/class&gt; &lt;!-- registerpack.RegisterAccountTests --&gt;
     &lt;/classes&gt;
@@ -191,14 +225,14 @@ data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
 data.addRows(1);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'regiserAccountPlaceholdersChecking')
+data.setCell(0, 1, 'registerAccountMandatoryFieldsAsterickSymbolCheck')
 data.setCell(0, 2, 'registerpack.RegisterAccountTests')
-data.setCell(0, 3, 613);
+data.setCell(0, 3, 691);
 window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 613 ms</span>
+              <span class="suite-total-time">Total running time: 691 ms</span>
               <div id="times-div-Default_suite">
               </div> <!-- times-div-Default_suite -->
             </div> <!-- times-div -->
@@ -213,23 +247,17 @@ return data;
         </div> <!-- panel -->
         <div panel-name="ignored-methods-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">11 ignored methods</span>
+            <span class="header-content">12 ignored methods</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="ignored-class-div">
               <span class="ignored-class-name">registerpack.RegisterAccountTests</span>
               <div class="ignored-methods-div">
-                <span class="ignored-method-name">registerAccountUsingKeyboardKeys</span>
-                <br/>
-                <span class="ignored-method-name">registerAccountByProvidingMismatchingPasswords</span>
-                <br/>
-                <span class="ignored-method-name">registerAccountPageNavigationsDifferentWays</span>
-                <br/>
-                <span class="ignored-method-name">registerAccountBySelectingNoNewsletterOption</span>
+                <span class="ignored-method-name">registerAccountUsingInvalidTelephoneNumber</span>
                 <br/>
                 <span class="ignored-method-name">registerAccountWithAllFields</span>
                 <br/>
-                <span class="ignored-method-name">registerAccountUsingInvalidTelephoneNumber</span>
+                <span class="ignored-method-name">registerAccountPageNavigationsDifferentWays</span>
                 <br/>
                 <span class="ignored-method-name">registerWithoutProvidingAnyFields</span>
                 <br/>
@@ -240,6 +268,14 @@ return data;
                 <span class="ignored-method-name">registerAccountUsingInvalidEmailAddress</span>
                 <br/>
                 <span class="ignored-method-name">registerAccountWithMandatoryFields</span>
+                <br/>
+                <span class="ignored-method-name">registerAccountByProvidingMismatchingPasswords</span>
+                <br/>
+                <span class="ignored-method-name">regiserAccountPlaceholdersChecking</span>
+                <br/>
+                <span class="ignored-method-name">registerAccountBySelectingNoNewsletterOption</span>
+                <br/>
+                <span class="ignored-method-name">registerAccountUsingKeyboardKeys</span>
                 <br/>
               </div> <!-- ignored-methods-div -->
             </div> <!-- ignored-class-div -->
@@ -257,12 +293,14 @@ return data;
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
-                <span class="method-name">regiserAccountPlaceholdersChecking</span>
-                <span class="method-start">11939 ms</span>
+                <img src="failed.png">
+                </img>
+                <span class="method-name">registerAccountMandatoryFieldsAsterickSymbolCheck</span>
+                <span class="method-start">14836 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">tearDown</span>
-                <span class="method-start">12558 ms</span>
+                <span class="method-start">15535 ms</span>
               </div> <!-- configuration-method after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
