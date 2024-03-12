@@ -640,7 +640,7 @@ public class RegisterAccountTests {
 		
 	}
 	
-	@Test
+	@Test(priority=13)
 	public void registerAccountMandatoryFieldsAsterickSymbolCheck() {
 		
 		WebElement firstNameLabel = driver.findElement(By.xpath("//label[@for='input-firstname']"));
