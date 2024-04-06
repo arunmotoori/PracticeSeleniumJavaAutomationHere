@@ -3,13 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="registerpack.RegisterAccountTests">
+      <class name="bookcartpack.AddToCartDemo">
         <methods>
-          <include name="registerAccountMandatoryFieldsAsterickSymbolCheck"/>
-          <include name="tearDown"/>
-          <include name="setup"/>
+          <include name="addingItemsToCartTestCaseOne"/>
         </methods>
-      </class> <!-- registerpack.RegisterAccountTests -->
+      </class> <!-- bookcartpack.AddToCartDemo -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
