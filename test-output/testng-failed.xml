@@ -3,11 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="bookcartpack.AddToCartDemo">
+      <class name="letcodepractice.ElementsDemo">
         <methods>
-          <include name="addingItemsToCartTestCaseOne"/>
+          <include name="verifyElementsTestOne"/>
+          <include name="closure"/>
+          <include name="setup"/>
         </methods>
-      </class> <!-- bookcartpack.AddToCartDemo -->
+      </class> <!-- letcodepractice.ElementsDemo -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
