@@ -38,8 +38,6 @@ public class InputsDemo {
 			System.out.println("Confirm Text field is not in readonly state");
 		}
 		
-		
-
 	}
 
 }
